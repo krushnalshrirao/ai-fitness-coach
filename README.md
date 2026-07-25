@@ -56,9 +56,9 @@ AI Fitness Coach is a mobile-first application that uses computer vision to anal
 ## 📅 Development Roadmap
 
 ### Phase 1
-- [ ] Project setup
-- [ ] Camera integration
-- [ ] Pose detection using MediaPipe
+- [x] Project setup
+- [x] Camera integration
+- [x] Pose detection using MediaPipe
 
 ### Phase 2
 - [ ] Joint angle calculation
