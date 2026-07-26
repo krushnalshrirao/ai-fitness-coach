@@ -18,6 +18,7 @@ import cv2
 
 from camera import Camera
 from pose_detector import PoseDetector
+from geometry import calculate_angle, LEFT_SHOULDER, LEFT_ELBOW, LEFT_WRIST
 
 
 def main():
@@ -56,6 +57,26 @@ def main():
                 status_color,
                 2,
             )
+
+            # Phase 2 verification: prove geometry.py works by showing
+            # a live left elbow angle. Full list always has 33 entries
+            # when a person is detected, so indexing by landmark id
+            # here is safe.
+            if landmarks:
+                elbow_angle = calculate_angle(
+                    landmarks[LEFT_SHOULDER],
+                    landmarks[LEFT_ELBOW],
+                    landmarks[LEFT_WRIST],
+                )
+                cv2.putText(
+                    frame,
+                    f"Left elbow angle: {int(elbow_angle)} deg",
+                    (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.7,
+                    (255, 255, 0),
+                    2,
+                )
 
             cv2.imshow("AI Fitness Coach", frame)
 
